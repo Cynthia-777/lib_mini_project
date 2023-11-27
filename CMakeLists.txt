@@ -15,7 +15,7 @@ set(TargetName ${PROJECT_NAME})
 
 message(TargetName = ${TargetName})
 
-add_library(${TargetName} SHARED core/http_connect/include/http_connect.h core/http_connect/src/http_connect.cpp test/httpConnectUnitTest.cpp core/thread_pool/thread_pool.h)
+add_library(${TargetName} SHARED core/http_connect/include/http_connect.h core/http_connect/src/http_connect.cpp test/httpConnectUnitTest.cpp core/thread_pool/thread_pool.h logger/include/logger.h logger/src/logger.cpp)
 
 #链接libcurl
 target_link_libraries(${TargetName} ${CURL_LIBRARIES})
@@ -33,7 +33,7 @@ message(PROJECT_BINARY_DIR = ${PROJECT_BINARY_DIR})
 #设置库安装目录
 SET(CMAKE_INSTALL_PREFIX ${PROJECT_BINARY_DIR}/${PROJECT_NAME})
 # 拷贝头文件 到 include 目录下
-INSTALL(FILES core/http_connect/include/http_connect.h core/thread_pool/thread_pool.h ${PROJECT_BINARY_DIR}/http_lib_export.h  DESTINATION include)
+INSTALL(FILES core/http_connect/include/http_connect.h core/thread_pool/thread_pool.h logger/include/logger.h ${PROJECT_BINARY_DIR}/http_lib_export.h  DESTINATION include)
 # 将 dll 和 lib 库文件 分别放到 lib 和 bin 目录下
 INSTALL(TARGETS ${TargetName} LIBRARY DESTINATION lib)
 

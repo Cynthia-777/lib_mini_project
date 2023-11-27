@@ -38,6 +38,7 @@
 			[
 				"core/http_connect/include/http_connect.h",
 				"core/thread_pool/thread_pool.h",
+				"logger/include/logger.h",
 				"cmake-build-debug/http_lib_export.h"
 			],
 			"type" : "file"

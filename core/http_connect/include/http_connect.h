@@ -1,6 +1,7 @@
 #ifndef HTTP_LIB_HTTP_CONNECT_H
 #define HTTP_LIB_HTTP_CONNECT_H
 
+#pragma once
 #include <curl/curl.h>
 #include <string>
 #include <iostream>
@@ -9,6 +10,7 @@
 #include <thread>
 #include <mutex>
 #include <spdlog/spdlog.h>
+#include "../logger/include/logger.h"
 using namespace std;
 
 struct FormField {
@@ -54,7 +56,7 @@ public:
 
 private:
     CURL* curl_ = nullptr;
-    mutex curl_muter;
+    mutex curl_mutex;
 
     static size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp);
 

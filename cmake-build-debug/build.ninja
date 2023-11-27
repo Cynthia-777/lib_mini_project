@@ -62,6 +62,14 @@ build CMakeFiles/http_lib.dir/test/httpConnectUnitTest.cpp.o: CXX_COMPILER__http
   OBJECT_DIR = CMakeFiles/http_lib.dir
   OBJECT_FILE_DIR = CMakeFiles/http_lib.dir/test
 
+build CMakeFiles/http_lib.dir/logger/src/logger.cpp.o: CXX_COMPILER__http_lib_Debug /Users/yujiarui/CLionProjects/job/http_lib/logger/src/logger.cpp || cmake_object_order_depends_target_http_lib
+  DEFINES = -DFMT_SHARED -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL -DSPDLOG_SHARED_LIB -Dhttp_lib_EXPORTS
+  DEP_FILE = CMakeFiles/http_lib.dir/logger/src/logger.cpp.o.d
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -fPIC -std=gnu++14
+  INCLUDES = -I/Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug -isystem /usr/local/include
+  OBJECT_DIR = CMakeFiles/http_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/http_lib.dir/logger/src
+
 
 # =============================================================================
 # Link build statements for SHARED_LIBRARY target http_lib
@@ -70,7 +78,7 @@ build CMakeFiles/http_lib.dir/test/httpConnectUnitTest.cpp.o: CXX_COMPILER__http
 #############################################
 # Link the shared library libhttp_lib.dylib
 
-build libhttp_lib.dylib: CXX_SHARED_LIBRARY_LINKER__http_lib_Debug CMakeFiles/http_lib.dir/core/http_connect/src/http_connect.cpp.o CMakeFiles/http_lib.dir/test/httpConnectUnitTest.cpp.o | /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libcurl.tbd /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libcurl.tbd /usr/local/lib/libspdlog.1.12.0.dylib /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a /usr/local/lib/libfmt.10.1.0.dylib
+build libhttp_lib.dylib: CXX_SHARED_LIBRARY_LINKER__http_lib_Debug CMakeFiles/http_lib.dir/core/http_connect/src/http_connect.cpp.o CMakeFiles/http_lib.dir/test/httpConnectUnitTest.cpp.o CMakeFiles/http_lib.dir/logger/src/logger.cpp.o | /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libcurl.tbd /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib/libcurl.tbd /usr/local/lib/libspdlog.1.12.0.dylib /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a /usr/local/lib/libfmt.10.1.0.dylib
   ARCH_FLAGS = -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6
   INSTALLNAME_DIR = @rpath/
   LANGUAGE_COMPILE_FLAGS = -g

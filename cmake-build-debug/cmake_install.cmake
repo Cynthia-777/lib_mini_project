@@ -41,6 +41,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES
     "/Users/yujiarui/CLionProjects/job/http_lib/core/http_connect/include/http_connect.h"
     "/Users/yujiarui/CLionProjects/job/http_lib/core/thread_pool/thread_pool.h"
+    "/Users/yujiarui/CLionProjects/job/http_lib/logger/include/logger.h"
     "/Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug/http_lib_export.h"
     )
 endif()

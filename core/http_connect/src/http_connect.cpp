@@ -45,9 +45,11 @@ size_t HttpConnection::HeaderCallback(void* contents, size_t size, size_t nmemb,
 
 bool HttpConnection::Post(const string& url, const string& data, string& response) {
     spdlog::info("enter Post! url = {}, post_data = {}", url, data);
-    lock_guard<mutex> lock(curl_muter);
+    Logger::daily_logger->info("enter Post! url = {}, post_data = {}", url, data);
+    lock_guard<mutex> lock(curl_mutex);
     if (!curl_) {
         spdlog::error("curl_ is null!!!");
+        Logger::daily_logger->error("curl_ is null!!!");
         return false;
     }
 
@@ -62,15 +64,19 @@ bool HttpConnection::Post(const string& url, const string& data, string& respons
 
     CURLcode res = curl_easy_perform(curl_);//执行请求
     spdlog::debug("response = {}", response);
+    Logger::daily_logger->debug("response = {}", response);
     spdlog::info("leave Post!");
+    Logger::daily_logger->info("leave Post!");
     return (res == CURLE_OK);
 }
 
 bool HttpConnection::Get(const string& url, string& response) {
     spdlog::info("enter Get! url = {}", url);
-    lock_guard<mutex> lock(curl_muter);
+    Logger::daily_logger->info("enter Get! url = {}", url);
+    lock_guard<mutex> lock(curl_mutex);
     if (!curl_) {
         spdlog::error("curl_ is null!!!");
+        Logger::daily_logger->error("curl_ is null!!!");
         return false;
     }
 
@@ -84,15 +90,19 @@ bool HttpConnection::Get(const string& url, string& response) {
 
     CURLcode res = curl_easy_perform(curl_);
     spdlog::debug("response = {}", response);
+    Logger::daily_logger->debug("response = {}", response);
     spdlog::info("leave Get!");
+    Logger::daily_logger->info("leave Get!");
     return (res == CURLE_OK);
 }
 
 bool HttpConnection::Put(const string& url, const string& data, string& response) {
     spdlog::info("enter Put! url = {}, put_data = {}", url, data);
-    lock_guard<mutex> lock(curl_muter);
+    Logger::daily_logger->info("enter Put! url = {}, put_data = {}", url, data);
+    lock_guard<mutex> lock(curl_mutex);
     if (!curl_) {
         spdlog::error("curl_ is null!!!");
+        Logger::daily_logger->error("curl_ is null!!!");
         return false;
     }
 
@@ -107,15 +117,19 @@ bool HttpConnection::Put(const string& url, const string& data, string& response
 
     CURLcode res = curl_easy_perform(curl_);
     spdlog::debug("response = {}", response);
+    Logger::daily_logger->debug("response = {}", response);
     spdlog::info("leave Put!");
+    Logger::daily_logger->info("leave Put!");
     return (res == CURLE_OK);
 }
 
 bool HttpConnection::Download(const std::string &url, const string& path, std::string &response) {
     spdlog::info("enter Download! url = {}, path = {}", url, path);
-    lock_guard<mutex> lock(curl_muter);
+    Logger::daily_logger->info("enter Download! url = {}, path = {}", url, path);
+    lock_guard<mutex> lock(curl_mutex);
     if (!curl_) {
         spdlog::error("curl_ is null!!!");
+        Logger::daily_logger->error("curl_ is null!!!");
         return false;
     }
     string filename;
@@ -142,30 +156,36 @@ bool HttpConnection::Download(const std::string &url, const string& path, std::s
         file.write(response.c_str(), response.length());
         file.close();
         spdlog::debug("response = {}", response);
+        Logger::daily_logger->debug("response = {}", response);
         spdlog::info("leave Download! File downloaded and saved in: {}", path_filename);
+        Logger::daily_logger->info("leave Download! File downloaded and saved in: {}", path_filename);
         return true;
     }
 
     spdlog::error("Failed to download file: {}", curl_easy_strerror(res));
+    Logger::daily_logger->error("Failed to download file: {}", curl_easy_strerror(res));
     return false;
 
 }
 
 
 void HttpConnection::Reset() {
-    lock_guard<mutex> lock(curl_muter);
+    lock_guard<mutex> lock(curl_mutex);
     curl_easy_reset(curl_);
 }
 
 
 bool HttpConnection::PostForm(const string& url, const vector<FormField>& data, string& response){
     spdlog::info("enter PostForm! url = {}", url);
+    Logger::daily_logger->info("enter PostForm! url = {}", url);
     for(auto& field : data){
         spdlog::info("Form field: key = {}, value = {}", field.key, field.value);
+        Logger::daily_logger->info("Form field: key = {}, value = {}", field.key, field.value);
     }
-    lock_guard<mutex> lock(curl_muter);
+    lock_guard<mutex> lock(curl_mutex);
     if (!curl_) {
         spdlog::error("curl_ is null!!!");
+        Logger::daily_logger->error("curl_ is null!!!");
         return false;
     }
 
@@ -186,16 +206,20 @@ bool HttpConnection::PostForm(const string& url, const vector<FormField>& data, 
 
     CURLcode res = curl_easy_perform(curl_);
     spdlog::debug("response = {}", response);
+    Logger::daily_logger->debug("response = {}", response);
     spdlog::info("leave PostForm!");
+    Logger::daily_logger->info("leave PostForm!");
     return (res == CURLE_OK);
 }
 
 
 bool HttpConnection::PostFile(const string& url, const string& file_path, string& response){
     spdlog::info("enter PostFile! url = {}， file_path = {}", url, file_path);
-    lock_guard<mutex> lock(curl_muter);
+    Logger::daily_logger->info("enter PostFile! url = {}， file_path = {}", url, file_path);
+    lock_guard<mutex> lock(curl_mutex);
     if (!curl_) {
         spdlog::error("curl_ is null!!!");
+        Logger::daily_logger->error("curl_ is null!!!");
         return false;
     }
 
@@ -218,21 +242,26 @@ bool HttpConnection::PostFile(const string& url, const string& file_path, string
 
     CURLcode res = curl_easy_perform(curl_);
     spdlog::debug("response = {}", response);
+    Logger::daily_logger->debug("response = {}", response);
     spdlog::info("leave PostFile!");
+    Logger::daily_logger->info("leave PostFile!");
     return (res == CURLE_OK);
 }
 
 bool HttpConnection::PutFile(const string& url, const string& file_path, string& response){
     spdlog::info("enter PutFile! url = {}， file_path = {}", url, file_path);
-    lock_guard<mutex> lock(curl_muter);
+    Logger::daily_logger->info("enter PutFile! url = {}， file_path = {}", url, file_path);
+    lock_guard<mutex> lock(curl_mutex);
     if (!curl_) {
         spdlog::error("curl_ is null!!!");
+        Logger::daily_logger->error("curl_ is null!!!");
         return false;
     }
 
     FILE* localFile = fopen(file_path.c_str(), "rb");
     if (!localFile) {
         spdlog::error("Failed to open local file!!!");
+        Logger::daily_logger->error("Failed to open local file!!!");
         return false;
     }
 
@@ -257,7 +286,9 @@ bool HttpConnection::PutFile(const string& url, const string& file_path, string&
 
     fclose(localFile);
     spdlog::debug("response = {}", response);
+    Logger::daily_logger->debug("response = {}", response);
     spdlog::info("leave PostFile!");
+    Logger::daily_logger->info("leave PostFile!");
     return (res == CURLE_OK);
 }
 
@@ -271,9 +302,11 @@ int HttpConnection::ProcessCallback(char *progress_data, double t, /* dltotal */
 
 bool HttpConnection::Download_With_Process(const string& url, const string& path, string& response){
     spdlog::info("enter Download_With_Process! url = {}， path = {}", url, path);
-    lock_guard<mutex> lock(curl_muter);
+    Logger::daily_logger->info("enter Download_With_Process! url = {}， path = {}", url, path);
+    lock_guard<mutex> lock(curl_mutex);
     if(!curl_){
         spdlog::error("curl_ is null!!!");
+        Logger::daily_logger->error("curl_ is null!!!");
         return false;
     }
     string filename;
@@ -304,19 +337,24 @@ bool HttpConnection::Download_With_Process(const string& url, const string& path
         file.write(response.c_str(), response.length());
         file.close();
         spdlog::debug("response = {}", response);
+        Logger::daily_logger->debug("response = {}", response);
         spdlog::info("leave Download_With_Process! File downloaded and saved in: {}", path_filename);
+        Logger::daily_logger->info("leave Download_With_Process! File downloaded and saved in: {}", path_filename);
         return true;
     }
 
     spdlog::error("Failed to download file: {}", curl_easy_strerror(res));
+    Logger::daily_logger->error("Failed to download file: {}", curl_easy_strerror(res));
     return false;
 }
 
 bool HttpConnection::Download_With_Process_And_Pause(const string& url, const string& path, string& response) {
     spdlog::info("enter Download_With_Process_And_Pause! url = {}， path = {}", url, path);
-    lock_guard<mutex> lock(curl_muter);
+    Logger::daily_logger->info("enter Download_With_Process_And_Pause! url = {}， path = {}", url, path);
+    lock_guard<mutex> lock(curl_mutex);
     if(!curl_) {
         spdlog::error("curl_ is null!!!");
+        Logger::daily_logger->error("curl_ is null!!!");
         return false;
     }
 
@@ -337,6 +375,7 @@ bool HttpConnection::Download_With_Process_And_Pause(const string& url, const st
     // 设置断点续传
     if (!state.file_size.empty()) {
         spdlog::debug("Start resume download");
+        Logger::daily_logger->debug("Start resume download");
         curl_easy_setopt(curl_, CURLOPT_RESUME_FROM, std::stoll(state.file_size));
     }
 
@@ -363,7 +402,9 @@ bool HttpConnection::Download_With_Process_And_Pause(const string& url, const st
         // 删除下载状态文件
         //std::remove("download_state.txt");
         spdlog::debug("response = {}", response);
+        Logger::daily_logger->debug("response = {}", response);
         spdlog::info("leave Download_With_Process_And_Pause! File downloaded and saved in: {}", path_filename);
+        Logger::daily_logger->info("leave Download_With_Process_And_Pause! File downloaded and saved in: {}", path_filename);
         return true;
     } else {
         // 保存下载状态到文件
@@ -373,9 +414,11 @@ bool HttpConnection::Download_With_Process_And_Pause(const string& url, const st
         state.file_size = std::to_string(std::stoll(state.file_size) + response.length());  // 更新文件大小
         SaveDownloadState(state);
         spdlog::debug("save download state!");
+        Logger::daily_logger->debug("save download state!");
     }
 
     spdlog::error("Failed to download file: {}", curl_easy_strerror(res));
+    Logger::daily_logger->error("Failed to download file: {}", curl_easy_strerror(res));
     return false;
 }
 
@@ -402,3 +445,4 @@ DownloadState HttpConnection::LoadDownloadState() {
     }
     return state;
 }
+

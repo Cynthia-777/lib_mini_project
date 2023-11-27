@@ -1,4 +1,5 @@
 /Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug/http_lib/include/http_connect.h
 /Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug/http_lib/include/thread_pool.h
+/Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug/http_lib/include/logger.h
 /Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug/http_lib/include/http_lib_export.h
 /Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug/http_lib/lib/libhttp_lib.dylib
