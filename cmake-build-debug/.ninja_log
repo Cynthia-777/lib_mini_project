@@ -1,0 +1,8 @@
+# ninja log v5
+4	1807	1701055379317755261	CMakeFiles/http_lib.dir/core/http_connect/src/http_connect.cpp.o	9767bafd997fb170
+39	3065	1701056292647259915	CMakeFiles/http_lib.dir/test/httpConnectUnitTest.cpp.o	70563f7f6fe1c308
+1868	2016	1701055498928992301	libhttp_lib.dylib	3d2d8df8d928b90b
+9	161	0	CMakeFiles/install.util	432f397bad611005
+51	4109	1701062926236315459	CMakeFiles/http_lib.dir/test/httpConnectUnitTest.cpp.o	70563f7f6fe1c308
+4109	4301	1701062926436895627	libhttp_lib.dylib	f2759c6a2394445b
+4	95	0	CMakeFiles/install.util	432f397bad611005
