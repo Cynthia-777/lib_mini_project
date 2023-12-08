@@ -1,7 +1,4 @@
 /Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug/CMakeFiles/http_lib.dir
+/Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug/CMakeFiles/unit_tests.dir
 /Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug/CMakeFiles/list_install_components.dir
-/Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug/CMakeFiles/install.dir
-/Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug/CMakeFiles/install/local.dir
-/Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug/CMakeFiles/install/strip.dir

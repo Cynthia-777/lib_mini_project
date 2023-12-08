@@ -1,6 +1,4 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja -S /Users/yujiarui/CLionProjects/job/http_lib -B /Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug
-TargetName=http_lib
-PROJECT_BINARY_DIR=/Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/yujiarui/CLionProjects/job/http_lib/cmake-build-debug

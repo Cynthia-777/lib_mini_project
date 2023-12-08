@@ -61,6 +61,9 @@ bool HttpConnection::Post(const string& url, const string& data, string& respons
     curl_easy_setopt(curl_, CURLOPT_POSTFIELDS, data.c_str());//设置请求数据
     curl_easy_setopt(curl_, CURLOPT_WRITEFUNCTION, &WriteCallback);//设置响应数据处理回调函数
     curl_easy_setopt(curl_, CURLOPT_WRITEDATA, &response);
+    //忽略SSL证书验证
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYPEER, 0L);
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYHOST, 0L);
 
     CURLcode res = curl_easy_perform(curl_);//执行请求
     spdlog::debug("response = {}", response);
@@ -87,6 +90,9 @@ bool HttpConnection::Get(const string& url, string& response) {
     struct curl_slist *headers = NULL;
     headers = curl_slist_append(headers, "Accept: application/json");
     curl_easy_setopt(curl_, CURLOPT_HTTPHEADER, headers);
+    //忽略SSL证书验证
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYPEER, 0L);
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYHOST, 0L);
 
     CURLcode res = curl_easy_perform(curl_);
     spdlog::debug("response = {}", response);
@@ -114,6 +120,9 @@ bool HttpConnection::Put(const string& url, const string& data, string& response
     curl_easy_setopt(curl_, CURLOPT_POSTFIELDS, data.c_str());
     curl_easy_setopt(curl_, CURLOPT_WRITEFUNCTION, &WriteCallback);
     curl_easy_setopt(curl_, CURLOPT_WRITEDATA, &response);
+    //忽略SSL证书验证
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYPEER, 0L);
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYHOST, 0L);
 
     CURLcode res = curl_easy_perform(curl_);
     spdlog::debug("response = {}", response);
@@ -147,6 +156,9 @@ bool HttpConnection::Download(const std::string &url, const string& path, std::s
 
     // 发送HTTP GET请求
     curl_easy_setopt(curl_, CURLOPT_URL, url.c_str());
+    //忽略SSL证书验证
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYPEER, 0L);
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYHOST, 0L);
     CURLcode res = curl_easy_perform(curl_);
 
     if (res == CURLE_OK) {
@@ -203,6 +215,9 @@ bool HttpConnection::PostForm(const string& url, const vector<FormField>& data, 
     curl_easy_setopt(curl_, CURLOPT_HTTPPOST, post);
     curl_easy_setopt(curl_, CURLOPT_WRITEFUNCTION, &WriteCallback);
     curl_easy_setopt(curl_, CURLOPT_WRITEDATA, &response);
+    //忽略SSL证书验证
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYPEER, 0L);
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYHOST, 0L);
 
     CURLcode res = curl_easy_perform(curl_);
     spdlog::debug("response = {}", response);
@@ -239,6 +254,9 @@ bool HttpConnection::PostFile(const string& url, const string& file_path, string
     curl_easy_setopt(curl_, CURLOPT_HTTPPOST, formpost);
     curl_easy_setopt(curl_, CURLOPT_WRITEFUNCTION, &WriteCallback);
     curl_easy_setopt(curl_, CURLOPT_WRITEDATA, &response);
+    //忽略SSL证书验证
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYPEER, 0L);
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYHOST, 0L);
 
     CURLcode res = curl_easy_perform(curl_);
     spdlog::debug("response = {}", response);
@@ -279,6 +297,9 @@ bool HttpConnection::PutFile(const string& url, const string& file_path, string&
     curl_easy_setopt(curl_, CURLOPT_MIMEPOST, mime);  // 设置上传的表单数据
     curl_easy_setopt(curl_, CURLOPT_WRITEFUNCTION, &WriteCallback);
     curl_easy_setopt(curl_, CURLOPT_WRITEDATA, &response);
+    //忽略SSL证书验证
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYPEER, 0L);
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYHOST, 0L);
 
     CURLcode res = curl_easy_perform(curl_);
 
@@ -328,6 +349,9 @@ bool HttpConnection::Download_With_Process(const string& url, const string& path
 
     // 发送HTTP GET请求
     curl_easy_setopt(curl_, CURLOPT_URL, url.c_str());
+    //忽略SSL证书验证
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYPEER, 0L);
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYHOST, 0L);
     CURLcode res = curl_easy_perform(curl_);
 
     if (res == CURLE_OK) {
@@ -387,6 +411,9 @@ bool HttpConnection::Download_With_Process_And_Pause(const string& url, const st
 
     // 发送HTTP GET请求
     curl_easy_setopt(curl_, CURLOPT_URL, url.c_str());
+    //忽略SSL证书验证
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYPEER, 0L);
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYHOST, 0L);
 
     CURLcode res = curl_easy_perform(curl_);
 
@@ -445,4 +472,3 @@ DownloadState HttpConnection::LoadDownloadState() {
     }
     return state;
 }
-

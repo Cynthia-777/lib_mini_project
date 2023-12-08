@@ -6,8 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-025bb1b5de091c2ef898.json",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.23"
@@ -16,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -31,7 +31,8 @@
 					"name" : "http_lib",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -40,8 +41,15 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "http_lib::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-http_lib-Debug-40ccaba5b43a4d0e644a.json",
+					"jsonFile" : "target-http_lib-Debug-adf0d340b6ec3a63d217.json",
 					"name" : "http_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "unit_tests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-unit_tests-Debug-70e7e8f828faa0276f6b.json",
+					"name" : "unit_tests",
 					"projectIndex" : 0
 				}
 			]
